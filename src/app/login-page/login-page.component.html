@@ -3,8 +3,10 @@
   [formGroup]="form"
   (ngSubmit)="onSubmit()"
 >
+
   <div class="card-content">
     <span class="card-title">Войти в систему</span>
+
     <div class="input-field">
       <input
         formControlName="email"
@@ -21,6 +23,9 @@
         <span *ngIf="form.get('email').errors['email']">Введите корректный email адрес</span>
       </span>
     </div>
+
+
+
     <div class="input-field">
       <input
         id="password"

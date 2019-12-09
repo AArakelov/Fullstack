@@ -15,7 +15,8 @@ import { AnalyticsPageComponent } from './analytics-page/analytics-page.componen
 import { HistoryPageComponent } from './history-page/history-page.component';
 import { OrderPageComponent } from './order-page/order-page.component';
 import { CategoriesComponent } from './categories/categories.component';
-import { LoaderComponent } from './shared/components/loader/loader.component'
+import { LoaderComponent } from './shared/components/loader/loader.component';
+import { ConfirmPageComponent } from './confirm-page/confirm-page.component'
 
 
 
@@ -31,7 +32,8 @@ import { LoaderComponent } from './shared/components/loader/loader.component'
     HistoryPageComponent,
     OrderPageComponent,
     CategoriesComponent,
-    LoaderComponent
+    LoaderComponent,
+    ConfirmPageComponent
   ],
   imports: [
     BrowserModule,
