@@ -4,7 +4,7 @@ declare var M
 
 export class MaterialService {
   static toast(message: string) {
-    M.toast({html: message})
+    M.toast({html: message, classes: 'rounded'})
   }
 
   static initializeFloatingButton(ref:ElementRef){

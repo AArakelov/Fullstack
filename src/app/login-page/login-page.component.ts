@@ -47,12 +47,19 @@ export class LoginPageComponent implements OnInit, OnDestroy {
     this.form.disable();
     this.aSub = this.auth.login(this.form.value).subscribe(
       () => this.router.navigate(['/overview']),
-    error => {
-      MaterialService.toast(error.error.errorMessage);
-      console.warn(error)
-      this.form.enable();
-    }
-  )
+      error => {
+        MaterialService.toast(error.error.errorMessage);
+        const email = this.form.get('email');
+        const password = this.form.get('password');
+        if (error.error.email) {
+          email.reset();
+        } else {
+          password.reset();
+        }
+        console.warn(error);
+        this.form.enable();
+      }
+    );
   }
 
 }
