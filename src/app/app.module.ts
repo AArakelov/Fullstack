@@ -16,7 +16,11 @@ import { HistoryPageComponent } from './history-page/history-page.component';
 import { OrderPageComponent } from './order-page/order-page.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { LoaderComponent } from './shared/components/loader/loader.component';
-import { ConfirmPageComponent } from './confirm-page/confirm-page.component'
+import { ConfirmPageComponent } from './confirm-page/confirm-page.component';
+import { ChatPageComponent } from './chat-page/chat-page.component';
+import { ChatFormComponent } from './chat-page/chat-form/chat-form.component';
+import { PositionsFormComponent } from './chat-page/chat-form/positions-form/positions-form.component';
+import { ChatDialigComponent } from './chat-page/chat-dialig/chat-dialig.component'
 
 
 
@@ -33,7 +37,11 @@ import { ConfirmPageComponent } from './confirm-page/confirm-page.component'
     OrderPageComponent,
     CategoriesComponent,
     LoaderComponent,
-    ConfirmPageComponent
+    ConfirmPageComponent,
+    ChatPageComponent,
+    ChatFormComponent,
+    PositionsFormComponent,
+    ChatDialigComponent
   ],
   imports: [
     BrowserModule,
@@ -49,6 +57,7 @@ import { ConfirmPageComponent } from './confirm-page/confirm-page.component'
       useClass: TokenInterceptor
     }
   ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule {

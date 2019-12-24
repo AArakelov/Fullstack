@@ -19,11 +19,12 @@ export class AuthService {
   }
 
   login(user: User): Observable<{ token: string }> {
+
     return this.http.post<{ token: string }>('/api/v1/login', user)
       .pipe(
         tap(
-          ({data}) => {
-            localStorage.setItem('auth-token', data.token);
+          ({data} ) => {
+            localStorage.setItem('token', data.token);
             this.setToken(data.token);
           }
         )

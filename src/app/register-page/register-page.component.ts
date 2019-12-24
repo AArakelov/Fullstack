@@ -14,6 +14,7 @@ export class RegisterPageComponent implements OnInit, OnDestroy {
 
   form: FormGroup;
   aSub: Subscription;
+  isAuth: false;
 
   constructor(private auth: AuthService,
               private router: Router,
@@ -37,13 +38,14 @@ export class RegisterPageComponent implements OnInit, OnDestroy {
   onSubmit() {
     this.form.disable();
     this.aSub = this.auth.register(this.form.value).subscribe(
-      () => {
-        console.log('register success');
+      (data) => {
+        console.log('-------->',data)
         this.router.navigate(['/login'], {
           queryParams: {
             registered: true
           }
         });
+
       },
       error => {
 
@@ -52,6 +54,7 @@ export class RegisterPageComponent implements OnInit, OnDestroy {
         this.form.enable();
       }
     );
+
   }
 
 }

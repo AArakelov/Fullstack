@@ -10,6 +10,9 @@ import {AnalyticsPageComponent} from './analytics-page/analytics-page.component'
 import {HistoryPageComponent} from './history-page/history-page.component';
 import {OrderPageComponent} from './order-page/order-page.component';
 import {CategoriesComponent} from './categories/categories.component';
+import {ChatPageComponent} from './chat-page/chat-page.component';
+import {ChatFormComponent} from './chat-page/chat-form/chat-form.component';
+import {ChatDialigComponent} from './chat-page/chat-dialig/chat-dialig.component';
 
 const routes: Routes = [
   {
@@ -25,7 +28,10 @@ const routes: Routes = [
       {path: 'analytics', component: AnalyticsPageComponent},
       {path: 'history', component: HistoryPageComponent},
       {path: 'order', component: OrderPageComponent},
-      {path: 'categories', component: CategoriesComponent}
+      {path: 'categories', component: CategoriesComponent},
+      {path: 'chat', component: ChatPageComponent},
+      {path: 'chat/new', component: ChatFormComponent},
+      {path: 'chat/:id', component: ChatDialigComponent},
     ]
   }
 ];

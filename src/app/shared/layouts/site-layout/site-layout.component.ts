@@ -16,7 +16,8 @@ export class SiteLayoutComponent implements OnInit, AfterViewInit {
     {url: '/analytics', name: 'Аналитика'},
     {url: '/history', name: 'История'},
     {url: '/order', name: 'Добавить заказ'},
-    {url: '/categories', name: 'Ассортимент'}
+    {url: '/categories', name: 'Ассортимент'},
+    {url: '/chat', name: 'Сообщения'},
   ]
 
   constructor(private auth: AuthService,
