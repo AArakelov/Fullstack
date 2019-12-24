@@ -1,8 +1,9 @@
 import {AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {ChatService} from '../../../shared/services/chat.services';
-import {Chat, Chatrooms} from '../../../shared/interfaces';
+import {Chat, Chatrooms, Rows} from '../../../shared/interfaces';
 import {MaterialInstance, MaterialService} from '../../../shared/classes/material.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {error} from '@angular/compiler/src/util';
 
 const myChats: Chat[] = [];
 
@@ -15,7 +16,7 @@ export class PositionsFormComponent implements OnInit, AfterViewInit, OnDestroy 
     @Input('chatId') chatId: string;
     @ViewChild('modal') modalRef: ElementRef;
 
-    chats: Chatrooms[] = [];
+    chats: any[] = [];
     model: MaterialInstance;
     form: FormGroup;
     isChatAdd = false;
@@ -39,6 +40,7 @@ export class PositionsFormComponent implements OnInit, AfterViewInit, OnDestroy 
                 console.log('---data--->', this.chats);
             }
         );
+
         // получаем список всех групп по категории
         // this.chatService.fetch(this.chatId).subscribe(chats => {
         //     this.chats = chats;
@@ -93,6 +95,9 @@ export class PositionsFormComponent implements OnInit, AfterViewInit, OnDestroy 
         this.chatService.create(chat).subscribe(
             resp => {
                 console.log(resp);
+                this.chats.push(chat);
+                MaterialService.toast(`Чат ${chat.name} успешно создан`);
+                this.model.close();
             }
         );
         // this.chats.push(chat);
@@ -114,8 +119,23 @@ export class PositionsFormComponent implements OnInit, AfterViewInit, OnDestroy 
     }
 
     onDeleted(chat: Chat) {
-        this.chats.splice(this.chats.indexOf(chat), 1);
-        console.log(chat);
-
+        const decision = window.confirm('Вы уверены что хотите удалить чат ?');
+        // console.log(decision)
+        if (decision) {
+            this.chatService.remove(chat.id)
+                .subscribe(responce => {
+                    console.log((responce));
+                    console.log(responce.massage);
+                    MaterialService.toast(`Чат ${chat.name} успешно удален`);
+                    this.chatService.fetch().subscribe(
+                        data => {
+                            const {rows} = data.chatrooms;
+                            this.chats = rows;
+                            console.log('---data--->', this.chats);
+                        });
+                }
+        } else {
+            return;
+        }
     }
 }

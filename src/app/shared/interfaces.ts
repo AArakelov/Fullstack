@@ -23,6 +23,11 @@ export class Chat {
 
 
 }
+export interface Message {
+    massage: string
+
+
+}
 
 export interface Rows {
     rows?: Array<Chat[]>;

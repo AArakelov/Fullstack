@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Chat, Chatrooms} from '../interfaces';
+import {Chat, Chatrooms, Message} from '../interfaces';
 import {Observable} from 'rxjs';
 import {AuthService} from './auth.service';
 
@@ -28,7 +28,10 @@ export class ChatService {
 
         return this.http.post<Chat>(`/api/v1/chatrooms`, chat);
 
+    }
 
+    remove(id: string): Observable<Message> {
+        return this.http.delete<Message>(`/api/v1/chatrooms/${id}`)
     }
 
 }
